@@ -1,0 +1,277 @@
+/* Logo Loop Section */
+.logo-loop-section {
+  padding: 80px 40px;
+  /* background: linear-gradient(180deg, #0d1117 0%, #0f1419 50%, #1a2332 100%); */
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo-loop-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  /* background: linear-gradient(90deg, transparent, #00d4ff, transparent); */
+}
+
+.logo-loop-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  /* background: linear-gradient(90deg, transparent, #0d6efd, transparent); */
+}
+
+.logo-loop-container {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Gradient Overlay for Smooth Edge Effect */
+.logo-loop-container::before,
+.logo-loop-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.logo-loop-container::before {
+  left: 0;
+  background: linear-gradient(90deg, 
+    rgba(13, 17, 23, 1) 0%, 
+    rgba(13, 17, 23, 0.8) 30%,
+    transparent 100%);
+}
+
+.logo-loop-container::after {
+  right: 0;
+  background: linear-gradient(270deg, 
+    rgba(13, 17, 23, 1) 0%, 
+    rgba(13, 17, 23, 0.8) 30%,
+    transparent 100%);
+}
+
+.logo-loop-wrapper {
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+/* Main Logo Loop Container */
+.logo-loop {
+  display: flex;
+  gap: 40px;
+  animation: scroll-left 35s linear infinite;
+  will-change: transform;
+  height: 50px;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo Card */
+.logo-card {
+  width: 120px;
+  height: 120px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(0, 212, 255, 0.1) 0%, 
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-card:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.25);
+}
+
+.logo-card:hover::before {
+  opacity: 1;
+}
+
+.logo-emoji {
+  font-size: 2.5rem;
+  display: block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.logo-card:hover .logo-emoji {
+  animation: bounce 0.6s ease-in-out infinite;
+}
+
+.logo-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.2));
+  transition: all 0.1s ease;
+}
+
+.logo-card:hover .logo-image {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(0, 212, 255, 0.4));
+}
+
+.logo-name {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  text-align: center;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* Scroll Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Hover Pause on Desktop */
+@media (hover: hover) {
+  .logo-loop:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .logo-loop-section {
+    padding: 60px 30px;
+  }
+
+  .logo-card {
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+    gap: 8px;
+  }
+
+  .logo-emoji {
+    font-size: 2rem;
+  }
+
+  .logo-name {
+    font-size: 0.8rem;
+  }
+
+  .logo-loop {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-loop-section {
+    padding: 50px 20px;
+  }
+
+  .logo-card {
+    width: 90px;
+    height: 90px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .logo-emoji {
+    font-size: 1.8rem;
+  }
+
+  .logo-name {
+    font-size: 0.75rem;
+  }
+
+  .logo-loop {
+    gap: 20px;
+    animation: scroll-left 33s linear infinite;
+  }
+
+  .logo-loop-container::before,
+  .logo-loop-container::after {
+    width: 12%;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-loop-section {
+    padding: 40px 15px;
+  }
+
+  .logo-card {
+    width: 75px;
+    height: 75px;
+    padding: 10px;
+  }
+
+  .logo-emoji {
+    font-size: 1.5rem;
+  }
+
+  .logo-name {
+    font-size: 0.7rem;
+  }
+
+  .logo-loop {
+    gap: 15px;
+    animation: scroll-left 28s linear infinite;
+  }
+
+  .logo-loop-container::before,
+  .logo-loop-container::after {
+    width: 15%;
+  }
+}
